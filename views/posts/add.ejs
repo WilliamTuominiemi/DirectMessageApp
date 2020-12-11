@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include("../partials/head.ejs") %>
+
+	<body>
+		<%- include("../partials/nav.ejs") %>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<!-- Title -->
+					<div class="pricing-header py-3 pt-md-5 pb-md-4 mx-auto">
+						<h1 class="display-4">Add post</h1>
+					</div>
+
+					<h4>posting as <%= displayName %></h4>
+
+
+					<form action="/posts" method="POST">
+						<!-- Title input -->
+						<div class="form-group has-error">
+							<label for="name">Title</label>
+							<input
+								type="text"
+								class="form-control"
+								name="title"
+								id="title"
+								required
+							/>
+						</div>
+
+						<!-- Body input -->
+						<div class="form-group">
+							<label for="composition">Body</label>
+							<textarea
+								type="text"
+								rows="5"
+								class="form-control"
+								name="body"
+								id="body"
+								required
+							></textarea>
+						</div>
+
+						<input type = "hidden" name = "username" id="username" value="<%= displayName %>" />
+
+						<!-- Create and cancel button -->
+						<div class="form-group">
+							<!-- <button type="submit" class="btn btn-primary">Submit</button>
+							<button class="btn btn-default">Cancel</button> -->
+
+							<button class="btn btn-dark">Submit</button>
+							<button class="btn btn-light">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<%- include("../partials/footer.ejs") %>
+	</body>
+</html>
