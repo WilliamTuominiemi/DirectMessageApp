@@ -2,19 +2,20 @@ const Post = require('../models/post')
 
 // All logs in an array
 const post_index = (req, res) => {
-	Post.find()
+	Post.find( {privacy: "public"} )
 		.sort({ createdAt: -1 })
 		.then((result) => {
+			console.log(result)
 			res.render('posts/index', { title: 'All Posts', posts: result })
 		})
 		.catch((err) => {
 			console.log(err)
-		})
+	})
 }
 
 // Gets add log form
 const post_add_get = (req, res) => {
-	res.render('posts/add', { title: 'Add Post', displayName: req.user.displayName })
+	res.render('posts/add', { title: 'Add Post', displayName: req.user.displayName, googleId: req.user.googleId })
 }
 
 // Posts post to /posts
@@ -24,7 +25,7 @@ const post_add_post = (req, res) => {
 	post
 		.save()
 		.then((result) => {
-			res.redirect('/posts')
+			res.redirect('/profile')
 		})
 		.catch((err) => {
 			console.log(err)
