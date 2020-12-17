@@ -35,8 +35,52 @@ const index_profile = (req, res) => {
 	}
 }
 
+const index_profile_ = (req, res) => {
+	try {
+		/*res.render('profilenew', {
+			title: 'Profile',
+			displayName: req.user.displayName,
+			image: req.user.image,
+		})*/
+		const param = req.params.posterId
+
+		console.log(req.params.posterId)
+
+		Post.find( {posterId: param, privacy: "public"} )
+		.sort({ createdAt: -1 })
+		.then((result) => {
+			console.log(result)
+			res.render('profile', { title: req.user.displayName, posts: result, displayName: req.user.displayName, googleId: req.user.googleId })		
+		})
+		.catch((err) => {
+			console.log(err)
+	})
+	} catch (err) {
+		console.log(err)
+		res.status(404).render('404', { title: 'Page not found' })
+	}
+}
+
+
+const post_delete = (req, res) => {	
+	console.log(req.params.id)
+	
+	const param = req.params.id
+
+	Post.find( {_id: param} )
+	.remove()
+	.then((result) => {
+		res.redirect('/profile')
+	})
+	.catch((err) => {
+		console.log(err)
+	})
+}
+
 module.exports = {
 	index_home,
 	index_about,
 	index_profile,
+	index_profile_,
+	post_delete
 }

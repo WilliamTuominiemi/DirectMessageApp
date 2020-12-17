@@ -1,5 +1,21 @@
 const Post = require('../models/post')
 
+const post_delete = (req, res) => {	
+	console.log(req.params.id)
+	
+	const param = req.params.id
+
+	Post.find( {_id: param} )
+	.remove()
+	.then((result) => {
+		res.redirect('/profile')
+	})
+	.catch((err) => {
+		console.log(err)
+	})
+}
+
+
 // All logs in an array
 const post_index = (req, res) => {
 	Post.find( {privacy: "public"} )
@@ -32,8 +48,11 @@ const post_add_post = (req, res) => {
 		})
 }
 
+
+
 module.exports = {
 	post_index,
 	post_add_get,
 	post_add_post,
+	post_delete
 }

@@ -10,7 +10,6 @@
 				<!-- Display name -->
 				<h2><%= displayName %></h2>
 
-
 				<!-- Logout button -->
 				<a class="btn btn-dark" href="/auth/logout" role="button">Logout</a>
 				</center>
@@ -28,6 +27,12 @@
 						<!-- Log body -->
 						<%= post.body %>
 					</p>
+					<p class="delete">
+						<!--<a href="/edit/<%=post._id%>">Edit </a>		-->		
+						 
+						<a href="/delete/<%=post._id%>">Delete</a>		
+					</p>
+					
 				</div>
 				<!-- Closing for each function and opening else statement -->
 				<% }) %> <% } else { %>
