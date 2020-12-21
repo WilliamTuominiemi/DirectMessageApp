@@ -24,7 +24,7 @@ require('./config/passport')(passport)
 const app = express()
 
 // Port number
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 // Connect to MongoDB
 connectDB()
