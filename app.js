@@ -24,7 +24,7 @@ require('./config/passport')(passport)
 const app = express()
 
 // Port number
-const PORT = process.env.PORT || 3000
+const PORT1 = process.env.PORT || 3000
 
 // Connect to MongoDB
 connectDB()
@@ -64,6 +64,6 @@ app.use((req, res) => {
 })
 
 // Listen for requests
-app.listen(PORT, () => {
-	console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`)
+app.listen(PORT1, () => {
+	console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT1}`)
 })
