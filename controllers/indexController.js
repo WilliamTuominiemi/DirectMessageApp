@@ -50,7 +50,7 @@ const index_profile_ = (req, res) => {
 		.sort({ createdAt: -1 })
 		.then((result) => {
 			console.log(result)
-			res.render('profile', { title: req.user.displayName, posts: result, displayName: req.user.displayName, googleId: req.user.googleId })		
+			res.render('profile', { title: result[0].username, posts: result, displayName: req.user.displayName, googleId: req.user.googleId })		
 		})
 		.catch((err) => {
 			console.log(err)
