@@ -13,7 +13,7 @@
 				<!-- Logout button -->
 				<a class="btn btn-dark" href="/auth/logout" role="button">Logout</a>
 				</center>
-				<h1 class="display-4">Your books</h1>
+				<h1 class="display-4">Your posts</h1>
 
 				<% if (posts.length > 0) { %> <% posts.forEach(post => { %>
 
@@ -23,7 +23,7 @@
 					</svg>
 					<p class="media-body pb-3 mb-0 lead lh-125 border-bottom border-gray">						
 						<!-- Log title -->
-						<strong class="d-block lead-gray-dark"><%= post.title %> by <%= post.author %></strong>
+						<strong class="d-block lead-gray-dark"><%= post.title %></strong>
 						<!-- Log body -->
 						<%= post.body %>
 					</p>
@@ -37,7 +37,7 @@
 				<!-- Closing for each function and opening else statement -->
 				<% }) %> <% } else { %>
 				<!-- Displays when there are no logs -->
-				<p>There are no books to display...</p>
+				<p>There are no posts to display...</p>
 				<% } %>
 			</div>
 		</main>

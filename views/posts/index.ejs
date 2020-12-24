@@ -6,7 +6,7 @@
 
 		<main role="main" class="container">
 			<div class="my-3 p-3 bg-white rounded shadow-sm">
-				<h1 class="display-4">All books</h1>
+				<h1 class="display-4">All posts</h1>
 
 				<% if (posts.length > 0) { %> <% posts.forEach(post => { %>
 
@@ -15,13 +15,7 @@
 						<rect width="100%" height="100%" fill="#007bff"></rect>
 					</svg>
 					<p class="media-body pb-3 mb-0 lead lh-125 border-bottom border-gray">
-						<% if(post.state === "read") { %>
-							<a href="/profile/<%=post.posterId%>"><%= post.username %></a> has read:
-						<% } else if(post.state === "reading") { %>
-							<a href="/profile/<%=post.posterId%>"><%= post.username %></a> is reading:
-						<% } else if(post.state === "toread") { %>
-							<a href="/profile/<%=post.posterId%>"><%= post.username %></a> is planning on reading:
-						<% } %>
+						<a href="/profile/<%=post.posterId%>"><%= post.username %></a> has posted:
 						
 						<!-- Log title -->
 						<strong class="d-block lead-gray-dark"><%= post.title %> by <%= post.author %></strong>
@@ -33,7 +27,7 @@
 				<!-- Closing for each function and opening else statement -->
 				<% }) %> <% } else { %>
 				<!-- Displays when there are no logs -->
-				<p>There are no books to display...</p>
+				<p>There are no posts to display...</p>
 				<% } %>
 			</div>
 		</main>

@@ -10,13 +10,13 @@
 				<div class="col-md-8 col-md-offset-2">
 					<!-- Title -->
 					<div class="pricing-header py-3 pt-md-5 pb-md-4 mx-auto">
-						<h1 class="display-4">Add book</h1>
+						<h1 class="display-4">Add post</h1>
 					</div>
 
 					<form action="/posts" method="POST">
 						<!-- Title input -->
 						<div class="form-group has-error">
-							<label for="name">Book title</label>
+							<label for="name">Post title</label>
 							<input
 								type="text"
 								class="form-control"
@@ -26,26 +26,9 @@
 							/>
 						</div>
 
-						<div class="form-group has-error">
-							<label for="author">Book author</label>
-							<input type="text" class="form-control" name="author" id="author" required/>
-						</div>
-
-						<div class="form-group">
-							<h>State</p>
-							<input type="radio" id="read" name="state" value="read" required>
-							<label for="public">Read</label>
-							</br>
-							<input type="radio" id="reading" name="state" value="reading" required>
-							<label for="reading">Reading</label>		
-							</br>
-							<input type="radio" id="toread" name="state" value="toread" required>
-							<label for="toread">Planning on reading</label>					
-						</div>
-
 						<!-- Body input -->
 						<div class="form-group">
-							<label for="composition">Book description</label>
+							<label for="composition">Post description</label>
 							<textarea
 								type="text"
 								rows="5"
