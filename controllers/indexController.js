@@ -31,7 +31,7 @@ const index_profile = (req, res) => {
 	})
 	} catch (err) {
 		console.log(err)
-		res.status(404).render('404', { title: 'Page not found' })
+		res.redirect("/auth/google")
 	}
 }
 
