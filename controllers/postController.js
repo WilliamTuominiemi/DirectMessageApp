@@ -22,7 +22,7 @@ const post_index = (req, res) => {
 		.sort({ createdAt: -1 })
 		.then((result) => {
 			console.log(result)
-			res.render('posts/index', { title: 'All Books', posts: result })
+			res.render('posts/index', { title: 'All Posts', posts: result })
 		})
 		.catch((err) => {
 			console.log(err)
