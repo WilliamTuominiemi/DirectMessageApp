@@ -15,12 +15,9 @@
 						<rect width="100%" height="100%" fill="#007bff"></rect>
 					</svg>
 					<p class="media-body pb-3 mb-0 lead lh-125 border-bottom border-gray">
-						<a href="/profile/<%=post.posterId%>"><%= post.username %></a> has posted:
+						<a href="/profile/<%=post.posterId%>"></a><%= post.username %></a> messaged:
 						
-						<!-- Log title -->
-						<strong class="d-block lead-gray-dark"><%= post.title %> by <%= post.author %></strong>
-						<!-- Log body -->
-						<%= post.body %>
+						<strong class="d-block lead-gray-dark"><%= post.message %></strong>
 
 					</p>
 				</div>
@@ -30,6 +27,8 @@
 				<p>There are no posts to display...</p>
 				<% } %>
 			</div>
+
+			<%- include("../partials/addmessage.ejs") %>
 		</main>
 
 		<%- include("../partials/footer.ejs") %>

@@ -1,9 +1,11 @@
 const Post = require('../models/post')
-
+const Contact = require('../models/contact')
+const NewContact = require('../models/newcontact')
+const User = require('../models/User')
 
 // Redirects to /posts
 const index_home = (req, res) => {
-	res.redirect('/posts')
+	res.redirect('/messages')
 }
 
 // Renders EJS page
@@ -31,7 +33,7 @@ const index_profile = (req, res) => {
 	})
 	} catch (err) {
 		console.log(err)
-		res.redirect("/auth/google")
+		res.redirect('/auth/google')
 	}
 }
 
@@ -61,6 +63,21 @@ const index_profile_ = (req, res) => {
 	}
 }
 
+const add_contact = (req, res) => {
+	const param = req.body.contactGoogleId
+
+	const url = `${req.body.googleId}${req.body.contactGoogleId}`
+
+	User.find( {googleId: param} )
+	.then((result) => {
+		console.log(result)
+		res.redirect(`/messages/${url}`)
+	})
+	.catch((err) => {
+		console.log(result)
+		res.redirect('/messages/add')
+	})
+}
 
 const post_delete = (req, res) => {	
 	console.log(req.params.id)
@@ -82,5 +99,6 @@ module.exports = {
 	index_about,
 	index_profile,
 	index_profile_,
-	post_delete
+	post_delete,
+	add_contact
 }

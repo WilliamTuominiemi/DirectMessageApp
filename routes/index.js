@@ -8,6 +8,6 @@ router.get('/about', indexController.index_about)
 router.get('/profile', indexController.index_profile)
 router.get('/profile/:posterId', indexController.index_profile_)
 router.get('/delete/:id', indexController.post_delete)
-
+router.post('/new/contact/', indexController.add_contact)
 
 module.exports = router

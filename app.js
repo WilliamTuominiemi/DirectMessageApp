@@ -54,7 +54,7 @@ app.use(express.urlencoded())
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // Routes
-app.use('/posts', post)
+app.use('/messages', post)
 app.use('/auth', auth)
 app.use('/', index)
 

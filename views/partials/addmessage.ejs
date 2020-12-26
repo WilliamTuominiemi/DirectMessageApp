@@ -1,0 +1,27 @@
+<div>
+	<form action="/messages" method="POST">
+		<div class="form-group has-error">
+			<label for="message">Type something</label>
+			<input
+				type="text"
+				class="form-control"
+				name="message"
+				id="message"
+				required
+			/>
+		</div>
+	
+		<input type = "hidden" name = "posterId" id="posterId" value="<%= googleId %>" />
+		<input type = "hidden" name = "chatId" id="posterId" value="<%= googleId %>101" />
+		<input type = "hidden" name = "username" id="username" value="<%= displayName %>" />
+	
+		<!-- Create and cancel button -->
+		<div class="form-group">
+			<!-- <button type="submit" class="btn btn-primary">Submit</button>
+			<button class="btn btn-default">Cancel</button> -->
+
+			<button class="btn btn-dark">Submit</button>
+			<button class="btn btn-light">Cancel</button>
+		</div>
+	</form>
+</div>

@@ -4,31 +4,20 @@ const Schema = mongoose.Schema
 // Schema
 const PostSchema = new Schema(
 	{
+		username: {
+			type: String,
+			required: true,
+		},
 		posterId: {
 			type: Number,
 			required: true,
 		},
-		title: {
+		message: {
 			type: String,
 			required: true,
 		},
-		body: {
+		chatId: {
 			type: String
-		},
-		username: {
-			type: String,
-		},
-		privacy: {
-			type: String,
-			required: true
-		},
-		state: {
-			type: String,
-			required: true
-		},
-		author: {
-			type: String,
-			required: true
 		}
 	},
 	{ timestamps: true }
