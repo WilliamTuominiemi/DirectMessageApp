@@ -9,5 +9,6 @@ router.get('/profile', indexController.index_profile)
 router.get('/profile/:posterId', indexController.index_profile_)
 router.get('/delete/:id', indexController.post_delete)
 router.post('/new/contact/', indexController.add_contact)
+router.get('/:id', indexController.chatroom)
 
 module.exports = router

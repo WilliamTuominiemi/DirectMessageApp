@@ -14,7 +14,7 @@
 					</div>
 
 					<form action="/new/contact" method="POST">
-						<!-- Title input -->
+
 						<div class="form-group has-error">
 							<label for="contactGoogleId">Contact id</label>
 							<input
@@ -26,7 +26,10 @@
 							/>
 						</div>
 
-						<input type = "hidden" name = "googleId" id="googleId" value="<%= googleId %>" />
+						<input type = "hidden" name = "contactDisplayName" id="contactDisplayName" value="null" />
+						<input type = "hidden" name = "userGoogleId" id="userGoogleId" value="<%= googleId %>" />
+						<input type = "hidden" name = "userDisplayName" id="userDisplayName" value="<%= displayName %>" />
+
 
 						<!-- Create and cancel button -->
 						<div class="form-group">

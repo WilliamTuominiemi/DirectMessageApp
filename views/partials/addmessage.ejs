@@ -1,5 +1,5 @@
 <div>
-	<form action="/messages" method="POST">
+	<form action="/messages/" method="POST">
 		<div class="form-group has-error">
 			<label for="message">Type something</label>
 			<input
@@ -12,7 +12,7 @@
 		</div>
 	
 		<input type = "hidden" name = "posterId" id="posterId" value="<%= googleId %>" />
-		<input type = "hidden" name = "chatId" id="posterId" value="<%= googleId %>101" />
+		<input type = "hidden" name = "chatId" id="chatId" value="<%= chatId %>" />
 		<input type = "hidden" name = "username" id="username" value="<%= displayName %>" />
 	
 		<!-- Create and cancel button -->

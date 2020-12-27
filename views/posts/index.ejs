@@ -5,9 +5,9 @@
 		<%- include("../partials/nav.ejs") %>
 
 		<main role="main" class="container">
-			<div class="my-3 p-3 bg-white rounded shadow-sm">
-				<h1 class="display-4">All posts</h1>
+			<%- include("../partials/addmessage.ejs") %>
 
+			<div class="my-3 p-3 bg-white rounded shadow-sm">
 				<% if (posts.length > 0) { %> <% posts.forEach(post => { %>
 
 				<!-- Creates div for every post -->
@@ -15,7 +15,7 @@
 						<rect width="100%" height="100%" fill="#007bff"></rect>
 					</svg>
 					<p class="media-body pb-3 mb-0 lead lh-125 border-bottom border-gray">
-						<a href="/profile/<%=post.posterId%>"></a><%= post.username %></a> messaged:
+						<a href="/profile/<%=post.posterId%>"><%= post.username %></a> messaged:
 						
 						<strong class="d-block lead-gray-dark"><%= post.message %></strong>
 
@@ -28,7 +28,6 @@
 				<% } %>
 			</div>
 
-			<%- include("../partials/addmessage.ejs") %>
 		</main>
 
 		<%- include("../partials/footer.ejs") %>

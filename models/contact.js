@@ -6,6 +6,10 @@ const ContactSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	userDisplayName:	{
+		type: String,
+		required: true,
+	},
 	contactDisplayName: {
 		type: String,
 		required: true,
