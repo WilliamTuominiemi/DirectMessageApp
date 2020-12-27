@@ -35,7 +35,6 @@ const post_index = (req, res) => {
 // Gets add log form
 const post_add_get = (req, res) => {
 	try {
-
 		res.render('posts/add', { title: 'Add Post', displayName: req.user.displayName, googleId: req.user.googleId })
 	} catch(err) {
 		console.log(err)

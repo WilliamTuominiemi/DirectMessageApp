@@ -71,27 +71,80 @@ const add_contact = (req, res) => {
 	const param = req.body.contactGoogleId
 
 	const url = `${req.body.userGoogleId}${req.body.contactGoogleId}`
+	const url2 = `${req.body.contactGoogleId}${req.body.userGoogleId}`
 
 
-	User.find( {googleId: param} )
-	.then((result) => {
-		req.body.contactDisplayName = result[0].displayName
-		const contact = new Contact(req.body)	
-		console.log(contact)
-		contact
-		.save()
-		.then((result) => {
-			console.log(result)
-			res.redirect(`/${url}`)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
-		
+	Contact.find()
+		.then((result)	=>	{
+			if(req.body.contactGoogleId === req.body.userGoogleId)
+			{
+				res.redirect('/new/contact/')
+			}	else {
+				if(result.length != 0)
+				{
+					result.forEach(contact => {		
+						console.log("1: ", contact.contactGoogleId)
+						console.log("1: ",req.body.contactGoogleId)
+	
+						console.log("1: ",contact.userGoogleId)
+						console.log("1: ",req.body.userGoogleId)
+	
+						if(contact.contactGoogleId === req.body.contactGoogleId && contact.userGoogleId === req.body.userGoogleId)	{
+							res.redirect(`/${url}`)
+							console.log("contact already exists, redirecting")
+	
+						}
+						else if(contact.contactGoogleId === req.body.userGoogleId && contact.userGoogleId === req.body.contactGoogleId)	{
+							res.redirect(`/${url2}`)
+							console.log("contact already exists, redirecting")
+						}
+						else {
+							console.log("New contact")
+							User.find( {googleId: param} )
+							.then((result) => {				
+								req.body.contactDisplayName = result[0].displayName
+								const contact = new Contact(req.body)	
+								contact
+								.save()
+								.then((result2) => {
+									res.redirect(`/${url}`)
+								})
+								.catch((err) => {
+									console.log(err)
+								})
+								
+							})
+							.catch((err) => {
+								res.redirect('/contacts/add')
+							})
+						}
+					})
+				}	else	{
+					console.log("no earlier contacts")
+					User.find( {googleId: param} )
+					.then((result) => {
+						req.body.contactDisplayName = result[0].displayName
+						const contact = new Contact(req.body)	
+						contact
+						.save()
+						.then((result2) => {
+							console.log(result2)
+							res.redirect(`/${url}`)
+						})
+						.catch((err) => {
+							console.log(err)
+						})
+								
+					})
+					.catch((err) => {
+						res.redirect('/contacts/add')
+					})
+				}	
+			}				
 	})
 	.catch((err) => {
-		res.redirect('/messages/add')
-	})
+		console.log(err)
+	}) 
 }
 
 const post_delete = (req, res) => {	
@@ -116,8 +169,13 @@ const chatroom = (req, res) => {
 	Post.find({chatId: param})
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log(result)
-			res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
+			if(JSON.stringify(param).includes(req.user.googleId))	{
+				console.log(result)
+				res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
+			}	else	{
+				res.redirect('/')
+			}
+			
 		})
 		.catch((err) => {
 			console.log(err)

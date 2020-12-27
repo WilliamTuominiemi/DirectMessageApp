@@ -16,9 +16,9 @@
 					</svg>
 					<p class="media-body pb-3 mb-0 lead lh-125 border-bottom border-gray">
 						<% if(contact.contactGoogleId === googleId) {%>
-							<a href="/<%=contact.userGoogleId%><%=contact.contactGoogleId%>"><%= contact.userDisplayName %></a>
+							<a href="/<%=contact.userGoogleId%><%=contact.contactGoogleId%>" class="btn btn-primary"><%= contact.userDisplayName %></a>
 						<% } else { %>
-							<a href="/<%=contact.userGoogleId%><%=contact.contactGoogleId%>"><%= contact.contactDisplayName %></a> 
+							<a href="/<%=contact.userGoogleId%><%=contact.contactGoogleId%>" class="btn btn-primary"><%= contact.contactDisplayName %></a>
 						<% } %>
 						
 						<!-- <strong class="d-block lead-gray-dark"></strong> -->
