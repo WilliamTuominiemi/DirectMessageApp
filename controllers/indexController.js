@@ -35,7 +35,7 @@ const index_profile = (req, res) => {
 		.sort({ createdAt: -1 })
 		.then((result) => {
 			//console.log(result)
-			res.render('profilenew', { title: 'All Posts', posts: result, displayName: req.user.displayName, googleId: req.user.googleId, chatId: '1234' })
+			res.render('profilenew', { title: 'Profile', posts: result, displayName: req.user.displayName, googleId: req.user.googleId, chatId: '1234' })
 		})
 		.catch((err) => {
 			console.log(err)
@@ -171,7 +171,7 @@ const chatroom = (req, res) => {
 		.then((result) => {	
 			if(JSON.stringify(param).includes(req.user.googleId))	{
 				//console.log(result)
-				res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
+				res.render('posts/index', { title: 'Messages', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
 
 			}	else	{
 				res.redirect('/')

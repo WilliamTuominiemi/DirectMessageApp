@@ -23,16 +23,6 @@ const post_index = (req, res) => {
 	Post.find()
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log("piog")
-			result.forEach(post =>{
-				const d1 = post.getTime();
-				const d2 = new Date().getTime();
-				const diff = d2 - d1;
-				const days = diff/1000*60*60*24;
-				console.log("post age", days)
-			} )
-		})
-		.then((result) => {
 			//console.log(result)
 			res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName })
 		})	
@@ -45,7 +35,7 @@ const post_index = (req, res) => {
 // Gets add log form
 const post_add_get = (req, res) => {
 	try {
-		res.render('posts/add', { title: 'Add Post', displayName: req.user.displayName, googleId: req.user.googleId })
+		res.render('posts/add', { title: 'Add Contact', displayName: req.user.displayName, googleId: req.user.googleId })
 	} catch(err) {
 		console.log(err)
 		res.redirect('/auth/google')
