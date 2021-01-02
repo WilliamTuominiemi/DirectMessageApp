@@ -13,7 +13,6 @@ const index = require('./routes/index')
 const Post = require('./models/post')
 const connectDB = require('./config/db')
 
-
 // Load config
 dotenv.config({ path: './config/config.env' })
 
@@ -34,6 +33,27 @@ app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
 
+Post.find()
+.then((result) => {
+	console.log("shit worked")
+	result.forEach(post =>{
+		const d1 = post.createdAt.getTime();
+		const d2 = new Date().getTime();
+		const diff = d2 - d1;
+		const days = diff/(1000*60*60*24);
+		console.log(days)
+		if(days > 2)	{
+			Post.find( {_id: post._id} )
+			.remove()
+			.then((result1) => {
+				//console.log(result1)
+			})
+			.catch((err) => {
+				console.log(err)
+			})			
+		}
+	} )
+})
 
 // Sessions
 app.use(
@@ -52,6 +72,8 @@ app.use(express.urlencoded())
 
 // Favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
+
 
 // Routes
 app.use('/messages', post)

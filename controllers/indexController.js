@@ -10,7 +10,7 @@ const index_home = (req, res) => {
 		Contact.find().or([{userGoogleId: param}, {contactGoogleId: param} ])		
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log(result)
+			//console.log(result)
 			res.render('index', { title: 'Contacts', contacts: result, displayName: req.user.displayName, googleId: req.user.googleId })
 		})
 		.catch((err) => {
@@ -34,7 +34,7 @@ const index_profile = (req, res) => {
 		Post.find({posterId: param})
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log(result)
+			//console.log(result)
 			res.render('profilenew', { title: 'All Posts', posts: result, displayName: req.user.displayName, googleId: req.user.googleId, chatId: '1234' })
 		})
 		.catch((err) => {
@@ -50,12 +50,12 @@ const index_profile_ = (req, res) => {
 	try {
 		const param = req.params.posterId
 
-		console.log(req.params.posterId)
+		//console.log(req.params.posterId)
 
 		Contact.find( {posterId: param, privacy: "public"} )
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log(result)
+			//console.log(result)
 			res.render('profile', { title: result[0].username, posts: result, displayName: req.user.displayName, googleId: req.user.googleId })		
 		})
 		.catch((err) => {
@@ -83,11 +83,11 @@ const add_contact = (req, res) => {
 				if(result.length != 0)
 				{
 					result.forEach(contact => {		
-						console.log("1: ", contact.contactGoogleId)
-						console.log("1: ",req.body.contactGoogleId)
+						//console.log("1: ", contact.contactGoogleId)
+						//console.log("1: ",req.body.contactGoogleId)
 	
-						console.log("1: ",contact.userGoogleId)
-						console.log("1: ",req.body.userGoogleId)
+						//console.log("1: ",contact.userGoogleId)
+						//console.log("1: ",req.body.userGoogleId)
 	
 						if(contact.contactGoogleId === req.body.contactGoogleId && contact.userGoogleId === req.body.userGoogleId)	{
 							res.redirect(`/${url}`)
@@ -128,7 +128,7 @@ const add_contact = (req, res) => {
 						contact
 						.save()
 						.then((result2) => {
-							console.log(result2)
+							//console.log(result2)
 							res.redirect(`/${url}`)
 						})
 						.catch((err) => {
@@ -168,19 +168,19 @@ const chatroom = (req, res) => {
 
 	Post.find({chatId: param})
 		.sort({ createdAt: -1 })
-		.then((result) => {
+		.then((result) => {	
 			if(JSON.stringify(param).includes(req.user.googleId))	{
-				console.log(result)
+				//console.log(result)
 				res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
+
 			}	else	{
 				res.redirect('/')
 			}
-			
 		})
 		.catch((err) => {
 			console.log(err)
 			res.redirect('/auth/google')
-	})
+		})
 }
 
 

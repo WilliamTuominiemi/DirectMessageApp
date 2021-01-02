@@ -23,9 +23,19 @@ const post_index = (req, res) => {
 	Post.find()
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log(result)
-			res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName })
+			console.log("piog")
+			result.forEach(post =>{
+				const d1 = post.getTime();
+				const d2 = new Date().getTime();
+				const diff = d2 - d1;
+				const days = diff/1000*60*60*24;
+				console.log("post age", days)
+			} )
 		})
+		.then((result) => {
+			//console.log(result)
+			res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName })
+		})	
 		.catch((err) => {
 			console.log(err)
 			res.redirect('/auth/google')
@@ -70,11 +80,21 @@ const chatroom = (req, res) => {
 	Post.find({chatId: param})
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			console.log(result)
+			console.log("piog")
+			result.forEach(post =>{
+				const d1 = post.getTime();
+				const d2 = new Date().getTime();
+				const diff = d2 - d1;
+				const days = diff/1000*60*60*24;
+				console.log("post age", days)
+			} )
+		})
+		.then((result) => {
+			//console.log(result)
 			res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
 		})
 		.catch((err) => {
-			console.log(err)
+			//console.log(err)
 			res.redirect('/auth/google')
 	})
 }
