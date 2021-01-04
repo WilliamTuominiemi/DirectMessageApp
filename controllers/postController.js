@@ -23,7 +23,7 @@ const post_index = (req, res) => {
 	Post.find()
 		.sort({ createdAt: -1 })
 		.then((result) => {
-			//console.log(result)
+			console.log("pog")
 			res.render('posts/index', { title: 'All Posts', posts: result, googleId: req.user.googleId, displayName: req.user.displayName })
 		})	
 		.catch((err) => {

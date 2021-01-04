@@ -5,6 +5,10 @@ const User = require('../models/User')
 
 // Redirects to /posts
 const index_home = (req, res) => {
+	res.render('home', { title: 'Home' })
+}
+
+const contacts = (req, res) => {
 	try {
 		const param = String(req.user.googleId)
 		Contact.find().or([{userGoogleId: param}, {contactGoogleId: param} ])		
@@ -82,7 +86,7 @@ const add_contact = (req, res) => {
 			}	else {
 				if(result.length != 0)
 				{
-					result.forEach(contact => {		
+					result.every(contact => {		
 						//console.log("1: ", contact.contactGoogleId)
 						//console.log("1: ",req.body.contactGoogleId)
 	
@@ -108,6 +112,7 @@ const add_contact = (req, res) => {
 								.save()
 								.then((result2) => {
 									res.redirect(`/${url}`)
+									return true;
 								})
 								.catch((err) => {
 									console.log(err)
@@ -154,7 +159,7 @@ const post_delete = (req, res) => {
 	.remove()
 	.then((result) => {
 		console.log("account id matching")
-		res.redirect('/')
+		res.redirect('/contacts')
 	})
 	.catch((err) => {
 		console.log(err)
@@ -184,6 +189,7 @@ const chatroom = (req, res) => {
 
 
 module.exports = {
+	contacts,
 	index_home,
 	index_about,
 	index_profile,

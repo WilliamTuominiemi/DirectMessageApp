@@ -6,6 +6,7 @@ const postController = require('../controllers/postController')
 const router = express.Router()
 
 router.get('/', indexController.index_home)
+router.get('/contacts', indexController.contacts)
 router.get('/about', indexController.index_about)
 router.get('/profile', indexController.index_profile)
 router.get('/profile/:posterId', indexController.index_profile_)
