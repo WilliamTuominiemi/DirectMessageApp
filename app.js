@@ -35,7 +35,6 @@ app.use(express.static('public'))
 
 Post.find()
 .then((result) => {
-	console.log("shit worked")
 	result.forEach(post =>{
 		const d1 = post.createdAt.getTime();
 		const d2 = new Date().getTime();

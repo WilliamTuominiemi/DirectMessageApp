@@ -20,7 +20,7 @@
 						<% } else { %>
 							<a href="/<%=contact.userGoogleId%><%=contact.contactGoogleId%>" class="btn btn-primary"><%= contact.contactDisplayName %></a>
 						<% } %>
-						
+						<a href="/delete/<%=contact._id%>" class="delete_link">delete</a>		
 						<!-- <strong class="d-block lead-gray-dark"></strong> -->
 
 					</p>

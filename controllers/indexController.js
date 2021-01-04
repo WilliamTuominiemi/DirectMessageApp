@@ -147,15 +147,14 @@ const add_contact = (req, res) => {
 	}) 
 }
 
-const post_delete = (req, res) => {	
-	console.log(req.params.id)
-	
+const post_delete = (req, res) => {		
 	const param = req.params.id
 
-	Post.find( {_id: param} )
+	Contact.find( {_id: param} )
 	.remove()
 	.then((result) => {
-		res.redirect('/profile')
+		console.log("account id matching")
+		res.redirect('/')
 	})
 	.catch((err) => {
 		console.log(err)
