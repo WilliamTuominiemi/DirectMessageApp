@@ -2,6 +2,7 @@ const Post = require('../models/post')
 const Contact = require('../models/contact')
 const NewContact = require('../models/newcontact')
 const User = require('../models/User')
+const contact = require('../models/contact')
 
 // Redirects to /posts
 const index_home = (req, res) => {
@@ -174,8 +175,16 @@ const chatroom = (req, res) => {
 		.sort({ createdAt: -1 })
 		.then((result) => {	
 			if(JSON.stringify(param).includes(req.user.googleId))	{
+				let contactId = JSON.stringify(param)
+				contactId = contactId.replace(req.user.googleId, "")
+				console.log(contactId)
+				User.find({googleId: JSON.parse(contactId)})
+				.then((result1) => {
+					console.log(result1)
+					res.render('posts/index', { title: 'Messages', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param, contactId: contactId, contactName: result1[0].displayName})
+				})
+
 				//console.log(result)
-				res.render('posts/index', { title: 'Messages', posts: result, googleId: req.user.googleId, displayName: req.user.displayName, chatId: param })
 
 			}	else	{
 				res.redirect('/')

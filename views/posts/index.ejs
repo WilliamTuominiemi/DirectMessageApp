@@ -1,18 +1,18 @@
 <html lang="en">
 	<%- include("../partials/head.ejs") %>
 
-	<script type="text/javascript">
-        function load()
-        {
-            setTimeout("window.open(self.location, '_self');", 10 );
-        }
-    </script>
+
 
 	<body>
 		<%- include("../partials/nav.ejs") %>
 
+
+
 		<main role="main" class="container">
+			<h1><%= contactName %></h1>
+
 			<%- include("../partials/addmessage.ejs") %>
+
 
 			<div class="my-3 p-3 bg-white rounded shadow-sm">
 				<% if (posts.length > 0) { %> <% posts.forEach(post => { %>
