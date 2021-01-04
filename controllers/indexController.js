@@ -18,7 +18,7 @@ const index_home = (req, res) => {
 	})
 	} catch (err) {
 		console.log(err)
-		res.redirect('/auth/google')
+		res.send("not logged in")
 	}
 }
 
